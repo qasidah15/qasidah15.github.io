@@ -1,0 +1,98 @@
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+  min-height: 100vh;
+}
+
+.navbar {
+  background: linear-gradient(90deg, #2563eb 70%, #1e40af 100%);
+}
+
+.brand-text {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.4rem;
+}
+
+.hero-section {
+  background: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  min-height: 320px;
+  color: #fff;
+  position: relative;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(37, 99, 235, 0.65);
+}
+
+.hero-title,
+.hero-subtitle,
+.hero-icon {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.7rem;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.hero-icon {
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+}
+
+.search-box {
+  background: #fff;
+  border-radius: 14px;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+}
+
+.song-list {
+  margin-top: 1rem;
+}
+
+.song-card {
+  font-size: 1.15rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px;
+  margin-bottom: 0.7rem;
+  background: linear-gradient(90deg, #93c5fd 0%, #a5b4fc 100%);
+  color: #222;
+  box-shadow: 0 2px 12px rgba(30,64,175,0.08);
+  transition: transform 0.13s, box-shadow 0.13s;
+}
+
+.song-card:hover, .song-card:focus {
+  background: linear-gradient(90deg, #2563eb 0%, #818cf8 100%);
+  color: #fff;
+  transform: scale(1.03);
+  box-shadow: 0 4px 24px rgba(37,99,235,0.18);
+  text-decoration: none;
+}
+
+.footer {
+  background: linear-gradient(90deg, #2563eb 80%, #1e40af 100%);
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: 0 -2px 12px rgba(30,64,175,0.1);
+}
+
+.footer-link {
+  color: #facc15;
+  text-decoration: underline;
+  margin: 0 8px;
+  font-weight: 500;
+}
+
+.footer-link:hover {
+  color: #ffe066;
+  text-decoration: none;
+}
