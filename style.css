@@ -43,6 +43,10 @@ body {
   text-decoration: none;
 }
 
+.btn-back {
+  margin-bottom: 1.5rem;
+}
+
 .footer {
   background-color: #fffce6;
   color: #000;
