@@ -9,10 +9,6 @@
     body {
       padding-top: 56px;
     }
-    .song-img {
-      max-width: 100%;
-      height: auto;
-    }
   </style>
 </head>
 <body>
@@ -27,7 +23,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Home</a>
+          <a class="nav-link active" href="index.html">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#about">About</a>
@@ -56,21 +52,6 @@
   <p>Ini adalah arsip digital lagu-lagu Qasidah. Semua lagu disusun berdasarkan gambar lirik agar mudah diakses secara offline maupun online. Cocok dijadikan aplikasi Android berbasis web.</p>
 </div>
 
-<!-- Song Modal -->
-<div class="modal fade" id="songModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="songTitle"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body text-center">
-        <img id="songImage" class="song-img" src="" alt="Lirik Lagu">
-      </div>
-    </div>
-  </div>
-</div>
-
 <!-- JSON Data & Script -->
 <script>
 const songs = [
@@ -94,14 +75,10 @@ function renderSongs(filter = '') {
   songs
     .filter(song => song.title.toLowerCase().includes(filter.toLowerCase()))
     .forEach(song => {
-      const item = document.createElement('button');
+      const item = document.createElement('a');
       item.className = 'list-group-item list-group-item-action';
       item.textContent = song.title;
-      item.onclick = () => {
-        document.getElementById('songTitle').textContent = song.title;
-        document.getElementById('songImage').src = song.image;
-        new bootstrap.Modal(document.getElementById('songModal')).show();
-      };
+      item.href = `song.html?judul=${encodeURIComponent(song.title)}`;
       list.appendChild(item);
     });
 }
