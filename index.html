@@ -51,7 +51,7 @@
 <!-- Footer -->
 <footer class="footer mt-auto py-4 bg-primary text-white text-center">
   <div class="container">
-    <div>&copy; 2025 Qasidah Digital. All rights reserved.</div>
+    <div>&copy; <span id="year"></span> Qasidah Digital. All rights reserved.</div>
   </div>
 </footer>
 
@@ -82,6 +82,10 @@ fetch('qasidah.json')
 document.getElementById('searchInput').addEventListener('input', (e) => {
   renderSongs(allSongs, e.target.value);
 });
+</script>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
