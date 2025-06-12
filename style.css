@@ -43,6 +43,11 @@ body {
   text-decoration: none;
 }
 
+.song-img {
+      max-width: 100%;
+      height: auto;
+}
+
 .btn-back {
   margin-bottom: 1.5rem;
 }
