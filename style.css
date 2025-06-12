@@ -1,51 +1,16 @@
 body {
   font-family: 'Roboto', Arial, sans-serif;
-  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+  background-color: #fffce6;
   min-height: 100vh;
 }
 
 .navbar {
-  background: linear-gradient(90deg, #2563eb 70%, #1e40af 100%);
+  background-color: #ffcd05;
 }
 
 .brand-text {
   font-family: 'Pacifico', cursive;
   font-size: 1.4rem;
-}
-
-.hero-section {
-  background: url('https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
-  min-height: 320px;
-  color: #fff;
-  position: relative;
-}
-
-.hero-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(37, 99, 235, 0.65);
-}
-
-.hero-title,
-.hero-subtitle,
-.hero-icon {
-  position: relative;
-  z-index: 1;
-}
-
-.hero-title {
-  font-family: 'Pacifico', cursive;
-  font-size: 2.7rem;
-}
-
-.hero-subtitle {
-  font-size: 1.2rem;
-  font-weight: 400;
-}
-
-.hero-icon {
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
 }
 
 .search-box {
@@ -79,8 +44,8 @@ body {
 }
 
 .footer {
-  background: linear-gradient(90deg, #2563eb 80%, #1e40af 100%);
-  color: #fff;
+  background-color: #fffce6;
+  color: #000;
   font-size: 1rem;
   box-shadow: 0 -2px 12px rgba(30,64,175,0.1);
 }
