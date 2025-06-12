@@ -1,72 +1,72 @@
 body {
-  font-family: 'Roboto', Arial, sans-serif;
-  background: #fffce6;
-  min-height: 100vh;
+  font-family: 'Roboto', Arial, sans-serif !important;
+  background: #fffce6 !important;
+  min-height: 100vh !important;
 }
 
 .navbar {
-  background: #ffcd05;
+  background: #ffcd05 !important;
 }
 
 .brand-text {
-  font-family: 'Pacifico', cursive;
-  font-size: 1.4rem;
+  font-family: 'Pacifico', cursive !important;
+  font-size: 1.4rem !important;
 }
 
 .search-box {
-  background: #fff;
-  border-radius: 14px;
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  background: #fff !important;
+  border-radius: 14px !important;
+  padding: 2rem 1.5rem 1.5rem 1.5rem !important;
 }
 
 .song-list {
-  margin-top: 1rem;
+  margin-top: 1rem !important;
 }
 
 .song-card {
-  font-size: 1.15rem;
-  font-weight: 500;
-  border: none;
-  border-radius: 12px;
-  margin-bottom: 0.7rem;
-  background: linear-gradient(90deg, #93c5fd 0%, #a5b4fc 100%);
-  color: #222;
-  box-shadow: 0 2px 12px rgba(30,64,175,0.08);
-  transition: transform 0.13s, box-shadow 0.13s;
+  font-size: 1.15rem !important;
+  font-weight: 500 !important;
+  border: none !important;
+  border-radius: 12px !important;
+  margin-bottom: 0.7rem !important;
+  background: linear-gradient(90deg, #93c5fd 0%, #a5b4fc 100%) !important;
+  color: #222 !important;
+  box-shadow: 0 2px 12px rgba(30,64,175,0.08) !important;
+  transition: transform 0.13s, box-shadow 0.13s !important;
 }
 
 .song-card:hover, .song-card:focus {
-  background: linear-gradient(90deg, #2563eb 0%, #818cf8 100%);
-  color: #fff;
-  transform: scale(1.03);
-  box-shadow: 0 4px 24px rgba(37,99,235,0.18);
-  text-decoration: none;
+  background: linear-gradient(90deg, #2563eb 0%, #818cf8 100%) !important;
+  color: #fff !important;
+  transform: scale(1.03) !important;
+  box-shadow: 0 4px 24px rgba(37,99,235,0.18) !important;
+  text-decoration: none !important;
 }
 
 .song-img {
-      max-width: 100%;
-      height: auto;
+      max-width: 100% !important;
+      height: auto !important;
 }
 
 .btn-back {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem !important;
 }
 
 .footer {
-  background-color: #fffce6;
-  color: #000;
-  font-size: 1rem;
-  box-shadow: 0 -2px 12px rgba(30,64,175,0.1);
+  background-color: #fffce6 !important;
+  color: #000 !important;
+  font-size: 1rem !important;
+  box-shadow: 0 -2px 12px rgba(30,64,175,0.1) !important;
 }
 
 .footer-link {
-  color: #facc15;
-  text-decoration: underline;
-  margin: 0 8px;
-  font-weight: 500;
+  color: #facc15 !important;
+  text-decoration: underline !important;
+  margin: 0 8px !important;
+  font-weight: 500 !important;
 }
 
 .footer-link:hover {
-  color: #ffe066;
-  text-decoration: none;
+  color: #ffe066 !important;
+  text-decoration: none !important;
 }
