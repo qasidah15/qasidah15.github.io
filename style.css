@@ -32,6 +32,11 @@ body {
 
 }
 
+.offcanvas.offcanvas-end {
+    border: none !important;
+    width: 35vh !important;
+}
+
 .brand-text {
   font-family: 'Pacifico', cursive !important;
   font-size: 1.4rem !important;
