@@ -103,10 +103,7 @@ body {
 }
 
 .footer-link {
-  color: #facc15 !important;
-  text-decoration: underline !important;
-  margin: 0 8px !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
 }
 
 .footer-link:hover {
