@@ -77,6 +77,8 @@ let allSongs = [];
 fetch('qasidah.json')
   .then(res => res.json())
   .then(data => {
+    // ✅ Sortir berdasarkan abjad (title)
+    data.sort((a, b) => a.title.localeCompare(b.title));
     allSongs = data;
     renderSongs(allSongs);
   });
