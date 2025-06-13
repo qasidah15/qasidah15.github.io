@@ -9,12 +9,12 @@ body {
   --bs-navbar-padding-y: 1.0rem !important;
 }
 
-.nav-item a {
+.nav-link {
   font-size: 20px !important;
   font-weight: 700 !important;
   color: #000 !important;
 }
-.nav-item a:active, .nav-item a:hover {
+.nav-link:active, .nav-link:hover {
   color: #896641 !important;
 }
 
