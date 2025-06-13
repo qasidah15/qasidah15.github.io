@@ -8,6 +8,9 @@ body {
   background: #ffcd05 !important;
   --bs-navbar-padding-y: 1.0rem !important;
 }
+.navbar-collapse {
+  flex-grow: inherit !important;
+}
 
 .nav-link {
   font-size: 20px !important;
