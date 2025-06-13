@@ -19,27 +19,60 @@
       <a class="navbar-brand d-flex align-items-center" href="/">
         <img src="https://raw.githubusercontent.com/qasidah15/qasidah/refs/heads/main/wp-content/uploads/2025/02/Qasidah-Logo-Mini.png" alt="Logo" height="45" class="me-2" />
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Navigasi">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
+      <!-- Offcanvas toggler for mobile (right side) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-label="Navigasi">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
         <li class="nav-item">
           <a class="nav-link active" href="index.html">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="about.html">About</a>
         </li>
-        <!--li class="nav-item">
-          <a class="nav-link" href="https://facebook.com" target="_blank">Facebook</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://instagram.com" target="_blank">Instagram</a>
-      </li-->
       </ul>
     </div>
+    
   </div>
 </nav>
+
+  <!-- Offcanvas Mobile Menu (right side) -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">
+      <img src="https://raw.githubusercontent.com/qasidah15/qasidah/refs/heads/main/wp-content/uploads/2025/02/Qasidah-Logo-Mini.png" alt="Logo" height="38" class="me-2" />
+      Qasidah App
+    </h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column h-100">
+    <form class="mb-3" role="search" id="offcanvasSearchForm">
+      <input class="form-control" type="search" placeholder="Cari lagu..." aria-label="Cari lagu" id="offcanvasSearchInput">
+    </form>
+    <ul class="navbar-nav flex-grow-1">
+      <li class="nav-item">
+        <a class="nav-link active" href="index.html" data-bs-dismiss="offcanvas">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="about.html" data-bs-dismiss="offcanvas">About</a>
+      </li>
+    </ul>
+    <div class="mt-auto d-flex gap-3 pb-3 justify-content-center">
+      <a href="https://facebook.com" target="_blank" title="Facebook" aria-label="Facebook">
+        <!-- Facebook SVG -->
+        <svg width="28" height="28" viewBox="0 0 50 50" fill="none"><circle cx="25" cy="25" r="25" fill="#000"/><path d="M32.6 26h-4.3v14h-5.8V26h-2.9v-5.1h2.9v-3.3c0-2.4 1.1-6.1 6.1-6.1l4.5.02V17h-3.3c-.5 0-1.1.2-1.1 1.2v2.7h4.6L32.6 26z" fill="#fff"/></svg>
+      </a>
+      <a href="https://instagram.com" target="_blank" title="Instagram" aria-label="Instagram">
+        <!-- Instagram SVG -->
+        <svg width="28" height="28" viewBox="0 0 50 50" fill="none">
+  <circle cx="25" cy="25" r="25" fill="#000"/>
+  <path d="M25 17.3c-4.2 0-7.7 3.4-7.7 7.7 0 4.2 3.4 7.7 7.7 7.7 4.2 0 7.7-3.4 7.7-7.7 0-4.2-3.4-7.7-7.7-7.7zm0 12.5c-2.7 0-4.8-2.2-4.8-4.8 0-2.7 2.2-4.8 4.8-4.8s4.8 2.2 4.8 4.8c0 2.7-2.2 4.8-4.8 4.8zm6.2-12.8c0 .9-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5c.8 0 1.5.7 1.5 1.5zM39.5 25c0-7.9-6.4-14.3-14.3-14.3S10.9 17.1 10.9 25s6.4 14.3 14.3 14.3S39.5 32.9 39.5 25zm-2.9 0c0 6.3-5.1 11.4-11.4 11.4s-11.4-5.1-11.4-11.4 5.1-11.4 11.4-11.4 11.4 5.1 11.4 11.4z" fill="#fff"/>
+</svg>
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- Main Container -->
 <div class="container my-5">
@@ -83,9 +116,30 @@ fetch('qasidah.json')
     renderSongs(allSongs);
   });
 
+// Main search input
 document.getElementById('searchInput').addEventListener('input', (e) => {
   renderSongs(allSongs, e.target.value);
+  // Sync search bars
+  document.getElementById('navbarSearchInput').value = e.target.value;
+  document.getElementById('offcanvasSearchInput').value = e.target.value;
 });
+
+// Navbar search (desktop)
+document.getElementById('navbarSearchInput').addEventListener('input', (e) => {
+  renderSongs(allSongs, e.target.value);
+  document.getElementById('searchInput').value = e.target.value;
+  document.getElementById('offcanvasSearchInput').value = e.target.value;
+});
+
+// Offcanvas search (mobile)
+document.getElementById('offcanvasSearchInput').addEventListener('input', (e) => {
+  renderSongs(allSongs, e.target.value);
+  document.getElementById('searchInput').value = e.target.value;
+  document.getElementById('navbarSearchInput').value = e.target.value;
+});
+
+document.getElementById('navbarSearchForm').addEventListener('submit', e => e.preventDefault());
+document.getElementById('offcanvasSearchForm').addEventListener('submit', e => e.preventDefault());
 </script>
 
 <script>
