@@ -1,0 +1,1 @@
+Web-based Android Application containing a collection of qasidah song lyrics, which are arranged to make it easier to search for qasidah song lyrics for Ar-Ridho (Gadang, Malang) Banjari sholawat congregations.
