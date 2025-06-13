@@ -42,13 +42,12 @@
   <div class="offcanvas-header">
     <h5 class="offcanvas-title">
       <img src="https://raw.githubusercontent.com/qasidah15/qasidah/refs/heads/main/wp-content/uploads/2025/02/Qasidah-Logo-Mini.png" alt="Logo" height="38" class="me-2" />
-      Qasidah App
     </h5>
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
   </div>
   <div class="offcanvas-body d-flex flex-column h-100">
-    <form class="mb-3" role="search" id="offcanvasSearchForm">
-      <input class="form-control" type="search" placeholder="Cari lagu..." aria-label="Cari lagu" id="offcanvasSearchInput">
+    <form class="mb-3" role="search" id="offcanvasSearchForm" autocomplete="off">
+      <input class="form-control" type="search" placeholder="Cari lagu..." aria-label="Cari lagu" id="offcanvasSearchInput" autocomplete="off">
     </form>
     <ul class="navbar-nav flex-grow-1">
       <li class="nav-item">
@@ -60,15 +59,18 @@
     </ul>
     <div class="mt-auto d-flex gap-3 pb-3 justify-content-center">
       <a href="https://facebook.com" target="_blank" title="Facebook" aria-label="Facebook">
-        <!-- Facebook SVG -->
-        <svg width="28" height="28" viewBox="0 0 50 50" fill="none"><circle cx="25" cy="25" r="25" fill="#000"/><path d="M32.6 26h-4.3v14h-5.8V26h-2.9v-5.1h2.9v-3.3c0-2.4 1.1-6.1 6.1-6.1l4.5.02V17h-3.3c-.5 0-1.1.2-1.1 1.2v2.7h4.6L32.6 26z" fill="#fff"/></svg>
+        <!-- Facebook Black SVG -->
+        <svg width="28" height="28" viewBox="0 0 50 50" fill="none">
+          <circle cx="25" cy="25" r="25" fill="#000"/>
+          <path d="M32.6 26h-4.3v14h-5.8V26h-2.9v-5.1h2.9v-3.3c0-2.4 1.1-6.1 6.1-6.1l4.5.02V17h-3.3c-.5 0-1.1.2-1.1 1.2v2.7h4.6L32.6 26z" fill="#fff"/>
+        </svg>
       </a>
       <a href="https://instagram.com" target="_blank" title="Instagram" aria-label="Instagram">
-        <!-- Instagram SVG -->
+        <!-- Instagram Black SVG -->
         <svg width="28" height="28" viewBox="0 0 50 50" fill="none">
-  <circle cx="25" cy="25" r="25" fill="#000"/>
-  <path d="M25 17.3c-4.2 0-7.7 3.4-7.7 7.7 0 4.2 3.4 7.7 7.7 7.7 4.2 0 7.7-3.4 7.7-7.7 0-4.2-3.4-7.7-7.7-7.7zm0 12.5c-2.7 0-4.8-2.2-4.8-4.8 0-2.7 2.2-4.8 4.8-4.8s4.8 2.2 4.8 4.8c0 2.7-2.2 4.8-4.8 4.8zm6.2-12.8c0 .9-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5c.8 0 1.5.7 1.5 1.5zM39.5 25c0-7.9-6.4-14.3-14.3-14.3S10.9 17.1 10.9 25s6.4 14.3 14.3 14.3S39.5 32.9 39.5 25zm-2.9 0c0 6.3-5.1 11.4-11.4 11.4s-11.4-5.1-11.4-11.4 5.1-11.4 11.4-11.4 11.4 5.1 11.4 11.4z" fill="#fff"/>
-</svg>
+          <circle cx="25" cy="25" r="25" fill="#000"/>
+          <path d="M25 17.3c-4.2 0-7.7 3.4-7.7 7.7 0 4.2 3.4 7.7 7.7 7.7 4.2 0 7.7-3.4 7.7-7.7 0-4.2-3.4-7.7-7.7-7.7zm0 12.5c-2.7 0-4.8-2.2-4.8-4.8 0-2.7 2.2-4.8 4.8-4.8s4.8 2.2 4.8 4.8c0 2.7-2.2 4.8-4.8 4.8zm6.2-12.8c0 .9-.7 1.5-1.5 1.5s-1.5-.7-1.5-1.5.7-1.5 1.5-1.5c.8 0 1.5.7 1.5 1.5zM39.5 25c0-7.9-6.4-14.3-14.3-14.3S10.9 17.1 10.9 25s6.4 14.3 14.3 14.3S39.5 32.9 39.5 25zm-2.9 0c0 6.3-5.1 11.4-11.4 11.4s-11.4-5.1-11.4-11.4 5.1-11.4 11.4-11.4 11.4 5.1 11.4 11.4z" fill="#fff"/>
+        </svg>
       </a>
     </div>
   </div>
@@ -107,43 +109,50 @@ function renderSongs(songs, filter = '') {
 }
 
 let allSongs = [];
+let searchInputs = [
+  document.getElementById('searchInput'),
+  document.getElementById('offcanvasSearchInput')
+];
+
+// Get search param if any
+const urlSearch = new URLSearchParams(window.location.search).get('search');
+if(urlSearch) {
+  searchInputs.forEach(input => input.value = urlSearch);
+}
+
 fetch('qasidah.json')
   .then(res => res.json())
   .then(data => {
-    // ✅ Sortir berdasarkan abjad (title)
     data.sort((a, b) => a.title.localeCompare(b.title));
     allSongs = data;
-    renderSongs(allSongs);
+    renderSongs(allSongs, searchInputs[0].value);
   });
 
-// Main search input
-document.getElementById('searchInput').addEventListener('input', (e) => {
-  renderSongs(allSongs, e.target.value);
-  // Sync search bars
-  document.getElementById('navbarSearchInput').value = e.target.value;
-  document.getElementById('offcanvasSearchInput').value = e.target.value;
+// Unified handler for live search on both search bars
+function handleLiveSearch(e) {
+  let val = e.target.value;
+  searchInputs.forEach(input => {
+    if(input !== e.target) input.value = val;
+  });
+  renderSongs(allSongs, val);
+}
+
+// Attach handler to both search bars
+searchInputs.forEach(input => {
+  input.addEventListener('input', handleLiveSearch);
 });
 
-// Navbar search (desktop)
-document.getElementById('navbarSearchInput').addEventListener('input', (e) => {
-  renderSongs(allSongs, e.target.value);
-  document.getElementById('searchInput').value = e.target.value;
-  document.getElementById('offcanvasSearchInput').value = e.target.value;
+// On offcanvas show, sync value and focus
+var offcanvasMenu = document.getElementById('offcanvasNavbar');
+offcanvasMenu.addEventListener('show.bs.offcanvas', function () {
+  searchInputs[1].value = searchInputs[0].value;
+  setTimeout(()=>searchInputs[1].focus(), 250);
 });
 
-// Offcanvas search (mobile)
-document.getElementById('offcanvasSearchInput').addEventListener('input', (e) => {
-  renderSongs(allSongs, e.target.value);
-  document.getElementById('searchInput').value = e.target.value;
-  document.getElementById('navbarSearchInput').value = e.target.value;
-});
-
-document.getElementById('navbarSearchForm').addEventListener('submit', e => e.preventDefault());
+// Prevent form submission (no page reload)
 document.getElementById('offcanvasSearchForm').addEventListener('submit', e => e.preventDefault());
-</script>
 
-<script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
