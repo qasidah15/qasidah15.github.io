@@ -102,11 +102,11 @@ body {
   box-shadow: 0 -2px 12px rgba(30,64,175,0.1) !important;
 }
 
-.footer-link {
+.footer a {
   font-weight: 600 !important;
 }
 
-.footer-link:hover {
+.footer a:hover {
   color: #ffe066 !important;
   text-decoration: none !important;
 }
