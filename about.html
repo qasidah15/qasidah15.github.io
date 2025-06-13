@@ -45,9 +45,6 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
   </div>
   <div class="offcanvas-body d-flex flex-column h-100">
-    <form class="mb-3" role="search" id="offcanvasSearchForm" autocomplete="off">
-      <input class="form-control" type="search" placeholder="Cari lagu..." aria-label="Cari lagu" id="offcanvasSearchInput" autocomplete="off">
-    </form>
     <ul class="navbar-nav flex-grow-1">
       <li class="nav-item">
         <a class="nav-link active" href="index.html" data-bs-dismiss="offcanvas">Home</a>
@@ -94,58 +91,6 @@
 </footer>
 
 <script>
-  // Autofill search if ?search= exists, and keep both navbar & offcanvas in sync
-  const urlSearch = new URLSearchParams(window.location.search).get('search');
-  let navbarInput = document.getElementById('navbarSearchInput');
-  let offcanvasInput = document.getElementById('offcanvasSearchInput');
-  if(urlSearch) {
-    navbarInput.value = urlSearch;
-    offcanvasInput.value = urlSearch;
-  }
-
-  let allSongs = [];
-  function renderSongs(songs, filter = '', targetList) {
-    targetList.innerHTML = '';
-    songs
-      .filter(song => song.title.toLowerCase().includes(filter.toLowerCase()))
-      .forEach(song => {
-        const item = document.createElement('a');
-        item.className = 'list-group-item list-group-item-action';
-        item.textContent = song.title;
-        item.href = `song.html?judul=${encodeURIComponent(song.title)}`;
-        targetList.appendChild(item);
-      });
-  }
-
-  // Fetch songs and init list (for live search)
-  fetch('qasidah.json')
-    .then(res => res.json())
-    .then(data => {
-      data.sort((a, b) => a.title.localeCompare(b.title));
-      allSongs = data;
-      renderSongs(allSongs, offcanvasInput.value, document.getElementById('offcanvasSongList'));
-    });
-
-  // Live search for both navbar and offcanvas, only displays in offcanvas
-  function handleLiveSearch(e) {
-    let val = e.target.value;
-    navbarInput.value = val;
-    offcanvasInput.value = val;
-    renderSongs(allSongs, val, document.getElementById('offcanvasSongList'));
-  }
-  navbarInput.addEventListener('input', handleLiveSearch);
-  offcanvasInput.addEventListener('input', handleLiveSearch);
-
-  // On offcanvas show, sync value and focus
-  var offcanvasMenu = document.getElementById('offcanvasNavbar');
-  offcanvasMenu.addEventListener('show.bs.offcanvas', function () {
-    offcanvasInput.value = navbarInput.value;
-    renderSongs(allSongs, offcanvasInput.value, document.getElementById('offcanvasSongList'));
-    setTimeout(()=>offcanvasInput.focus(), 250);
-  });
-
-  document.getElementById('offcanvasSearchForm').addEventListener('submit', e => e.preventDefault());
-  document.getElementById('navbarSearchForm').addEventListener('submit', e => e.preventDefault());
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
