@@ -6,7 +6,16 @@ body {
 
 .navbar {
   background: #ffcd05 !important;
+  --bs-navbar-padding-y: 1.0rem !important;
+}
+
+.nav-item a {
+  font-size: 20px !important;
+  font-weight: 700 !important;
   color: #000 !important;
+}
+.nav-item a:active, .nav-item a:hover {
+  color: #896641 !important;
 }
 
 .brand-text {
@@ -22,6 +31,11 @@ body {
 
 .song-list {
   margin-top: 1rem !important;
+}
+.song-list a {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  padding: 0 0.8rem !important;
 }
 
 .song-card {
