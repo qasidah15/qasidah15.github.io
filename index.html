@@ -109,48 +109,17 @@ function renderSongs(songs, filter = '') {
 }
 
 let allSongs = [];
-let searchInputs = [
-  document.getElementById('searchInput'),
-  document.getElementById('offcanvasSearchInput')
-];
-
-// Get search param if any
-const urlSearch = new URLSearchParams(window.location.search).get('search');
-if(urlSearch) {
-  searchInputs.forEach(input => input.value = urlSearch);
-}
-
 fetch('qasidah.json')
   .then(res => res.json())
   .then(data => {
     data.sort((a, b) => a.title.localeCompare(b.title));
     allSongs = data;
-    renderSongs(allSongs, searchInputs[0].value);
+    renderSongs(allSongs);
   });
 
-// Unified handler for live search on both search bars
-function handleLiveSearch(e) {
-  let val = e.target.value;
-  searchInputs.forEach(input => {
-    if(input !== e.target) input.value = val;
-  });
-  renderSongs(allSongs, val);
-}
-
-// Attach handler to both search bars
-searchInputs.forEach(input => {
-  input.addEventListener('input', handleLiveSearch);
+document.getElementById('searchInput').addEventListener('input', (e) => {
+  renderSongs(allSongs, e.target.value);
 });
-
-// On offcanvas show, sync value and focus
-var offcanvasMenu = document.getElementById('offcanvasNavbar');
-offcanvasMenu.addEventListener('show.bs.offcanvas', function () {
-  searchInputs[1].value = searchInputs[0].value;
-  setTimeout(()=>searchInputs[1].focus(), 250);
-});
-
-// Prevent form submission (no page reload)
-document.getElementById('offcanvasSearchForm').addEventListener('submit', e => e.preventDefault());
 
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
