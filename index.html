@@ -48,10 +48,10 @@
   <div class="offcanvas-body d-flex flex-column h-100">
     <ul class="navbar-nav flex-grow-1">
       <li class="nav-item">
-        <a class="nav-link active" href="/index.html" data-bs-dismiss="offcanvas">Home</a>
+        <a class="nav-link active" href="/index.html">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/about.html" data-bs-dismiss="offcanvas">About</a>
+        <a class="nav-link" href="/about.html">About</a>
       </li>
     </ul>
     <div class="mt-auto d-flex gap-3 pb-3 justify-content-center">
@@ -117,6 +117,18 @@ fetch('qasidah.json')
 document.getElementById('searchInput').addEventListener('input', (e) => {
   renderSongs(allSongs, e.target.value);
 });
+
+document.querySelectorAll('#offcanvasNavbar .nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      var target = this.getAttribute('href');
+      var offcanvas = bootstrap.Offcanvas.getOrCreateInstance(document.getElementById('offcanvasNavbar'));
+      offcanvas.hide();
+      setTimeout(function() {
+        window.location.href = target;
+      }, 300);
+      e.preventDefault();
+    });
+  });
 
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
