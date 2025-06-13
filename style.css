@@ -84,7 +84,15 @@ body {
 }
 
 .btn-back {
-  margin-bottom: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+    color: #000 !important;
+    background-color: #ffc107 !important;
+    border: none !important;
+    font-weight: bold !important;
+}
+.btn-back:hover {
+    color: #000 !important;
+    background-color: #ffc107 !important;
 }
 
 .footer {
