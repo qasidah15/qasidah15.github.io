@@ -92,21 +92,25 @@
 
 <!-- Script -->
 <script>
-  // Get song title from URL
+function getQueryParam(name) {
   const params = new URLSearchParams(window.location.search);
-  const judul = params.get('judul');
-  if(judul) {
-    document.getElementById('songTitle').textContent = judul;
-    fetch('qasidah.json')
-      .then(res => res.json())
-      .then(data => {
-        const song = data.find(s => s.title === judul);
-        if(song) {
-          document.getElementById('songArtist').textContent = song.artist || '';
-          document.getElementById('songLyrics').textContent = song.lyrics || 'Lirik belum tersedia.';
-        }
-      });
-  }
+  return params.get(name);
+}
+
+const judul = getQueryParam('judul');
+
+fetch('qasidah.json')
+  .then(res => res.json())
+  .then(songs => {
+    const lagu = songs.find(song => song.title === judul);
+    if (lagu) {
+      document.getElementById('songTitle').textContent = lagu.title;
+      document.getElementById('songImage').src = lagu.image;
+    } else {
+      document.querySelector('.container').innerHTML = '<p class="text-center text-danger">Lagu tidak ditemukan.</p>';
+    }
+  });
+  
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
