@@ -20,6 +20,12 @@ body {
 .nav-link:active, .nav-link:hover {
   color: #896641 !important;
 }
+.judulh2 {
+  margin-bottom: .5rem !important;
+}
+.subjudulsmall {
+  margin-bottom: 1.5rem !important;
+}
 
 @media only screen and (max-width: 600px) {
   nav.navbar.navbar-expand-lg.navbar-light.bg-primary.shadow {
