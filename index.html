@@ -77,6 +77,7 @@
 <div class="container my-5">
     <div class="search-box shadow-lg p-4 mb-5 bg-white rounded">
       <h2 class="mb-4 text-center fw-bold">Daftar Lagu Qasidah</h2>
+      <small id="totalSongs" class="text-muted d-block text-center mb-3"></small>
       <input type="text" id="searchInput" class="form-control form-control-lg mb-3" placeholder="Cari lagu..." />
       <div id="songList" class="list-group song-list"></div>
     </div>
@@ -103,6 +104,8 @@ function renderSongs(songs, filter = '') {
       item.href = `song.html?judul=${encodeURIComponent(song.title)}`;
       list.appendChild(item);
     });
+  // Update total number (filtered)
+  document.getElementById('totalSongs').textContent = `Total ${songs.length} Lirik Lagu`;
 }
 
 let allSongs = [];
@@ -115,7 +118,9 @@ fetch('qasidah.json')
   });
 
 document.getElementById('searchInput').addEventListener('input', (e) => {
-  renderSongs(allSongs, e.target.value);
+  // Show total based on filtered list
+  const filtered = allSongs.filter(song => song.title.toLowerCase().includes(e.target.value.toLowerCase()));
+  renderSongs(filtered, '');
 });
 
 document.querySelectorAll('#offcanvasNavbar .nav-link').forEach(link => {
