@@ -26,18 +26,6 @@ body {
 .subjudulsmall {
   margin-bottom: 1.5rem !important;
 }
-.song-number-box {
-  display: inline-block !important;
-  width: 32px !important;
-  height: 32px !important;
-  line-height: 32px !important;
-  background: #000 !important;
-  color: #FFD600 !important;
-  border-radius: 8px !important;
-  font-weight: bold !important;
-  text-align: center !important;
-  font-size: 0.8em !important;
-}
 
 @media only screen and (max-width: 600px) {
   nav.navbar.navbar-expand-lg.navbar-light.bg-primary.shadow {
