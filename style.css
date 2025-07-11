@@ -26,6 +26,17 @@ body {
 .subjudulsmall {
   margin-bottom: 1.5rem !important;
 }
+.song-number-box {
+  display: inline-block !important;
+  min-width: 32px !important;
+  padding: 2px 10px !important;
+  background: #000 !important;
+  color: #FFD600 !important;
+  border-radius: 8px !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  font-size: 1.1em !important;
+}
 
 @media only screen and (max-width: 600px) {
   nav.navbar.navbar-expand-lg.navbar-light.bg-primary.shadow {
